@@ -1,0 +1,8 @@
+# Ask for user's name
+name = input("What is your first name? ").lower()
+# Ask for favourite number
+number = input("What's your favourite number? ")
+# Generate username
+username = f"Your username is: {name}_{number}"
+# Print the username
+print(username)
