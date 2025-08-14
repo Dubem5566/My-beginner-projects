@@ -1,0 +1,9 @@
+import random
+def username_generator():
+    name = input("What is your first name? ").lower()
+    words = ["cool", "happy", "awesome", "wonderful"]
+    word = random.choice(words)
+    username = f"Your username is: {name}_{word}"
+    print(username)
+
+username_generator()
