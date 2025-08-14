@@ -1,0 +1,11 @@
+import random
+# Ask for user's name
+name = input("What is your first name? ").lower()
+# Create a list of words
+words = ["cool", "happy", "awesome", "wonderful"]
+# Give those words a random choice
+word = random.choice(words)
+# Create a username variable then add name and word
+username = f"Your username is: {name}_{word}"
+# print username
+print(username)
