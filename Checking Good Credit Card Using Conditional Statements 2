@@ -1,0 +1,9 @@
+# Stating the price variable
+price = 1000000
+# Creating a boolean varaible by asking if the user has good credit
+good_credit = input("Do you have good credit? yes/no ")
+# Using user's reply to create a conditional statement
+if good_credit == "yes":
+    print(f"Your down payment is: ${round(0.1 * price): ,}")
+else:
+    print(f"Your down payment is: ${round(0.2 * price): ,}")
