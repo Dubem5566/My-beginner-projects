@@ -1,0 +1,9 @@
+# Creating the price variable
+price = 1000000
+# creating a boolean variable
+good_credit = False
+# Creating a conditional statement
+if good_credit:
+    print(f"Down payment is: ${round(0.1 * price) : ,}")
+else:
+    print(f"Down payment is: ${round(0.2 * price) : ,}")
