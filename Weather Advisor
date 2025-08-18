@@ -1,0 +1,11 @@
+# Ask the user to input the temperature and convert to integer
+Temperature = int(input("What's the current temperature? "))
+# Create conditional statements
+if Temperature < 10 :
+    print("It's a very cold day, wear a heavy coat, scarf and gloves")
+elif Temperature >= 10 and Temperature < 20 :
+    print("It's mildly cold, wear a light jacket or sweater")
+elif 20 <= Temperature <= 30 :
+    print("The weather is cool, wear a T-shirt and jeans")
+else :
+    print("It's hot! Wear shorts and drink enough water")
