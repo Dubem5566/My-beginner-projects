@@ -1,0 +1,203 @@
+cart_data = {
+'bread':1000,
+'milk': 3000,
+'oats':500,
+'meat': 200,
+'garri': 400,
+'sardines': 1000,
+'water':50
+}
+user_cart = {'Bread':0, 'Milk':0, 'Oat':0, 'Meat':0, 'Garri':0, 'Sardine':0, 'Water':0}
+total = []
+class Cart():
+    def __init__(self,bread,milk,oats,meat,garri,sardines,water) :
+        self.bread = bread
+        self.milk = milk
+        self.oats = oats
+        self.meat = meat
+        self.garri = garri
+        self.sardines = sardines
+        self.water = water
+
+    def add_item(self) :  
+        print("Enter 1 to add bread")
+        print("Enter 2 to add milk")
+        print("Enter 3 to add oats")
+        print("Enter 4 to add meat")
+        print("Enter 5 to add garri")
+        print("Enter 6 to add sardines")
+        print("Enter 7 to add water")
+        user = input("Enter choice: ").strip()
+        if user == "1" :
+            user_bread = int(input("How many bread do you want to add? "))
+            print(f"Added {user_bread} bread to cart")
+            user_cart["Bread"] = user_cart["Bread"] + user_bread
+        elif user == "2" :
+            user_milk = int(input("How many milk do you want to add? "))
+            user_cart["Milk"] = user_cart["Milk"] + user_milk
+            print(f"Added {user_milk} milk to cart ")
+        elif user == "3" :
+            user_oat = int(input("How many oat do you want to add? "))
+            user_cart["Oat"] = user_cart["Oat"] + user_oat
+            print(f"Added {user_oat} oat to cart ") 
+        elif user == "4" :
+            user_meat = int(input("How many meat do you want to add? "))
+            user_cart["Meat"] = user_cart["Meat"] + user_meat
+            print(f"Added {user_meat} meat to cart ") 
+        elif user == "5" :
+            user_garri = int(input("How many garri do you want to add? "))
+            user_cart["Garri"] = user_cart["Garri"] + user_garri
+            print(f"Added {user_garri} garri to cart ") 
+        elif user == "6" :
+            user_sardine = int(input("How many sardine do you want to add? "))
+            user_cart["Sardine"] = user_cart["Sardine"] + user_sardine
+            print(f"Added {user_sardine} sardine to cart ") 
+        elif user == "7" :
+            user_water= int(input("How many water do you want to add? "))
+            user_cart["Water"] = user_cart["Water"] + user_water
+            print(f"Added {user_water} water to cart ")
+        else :
+            print("Invalid input!")
+    
+    def drop_item (self) :
+       user = input("What item would you like to drop? ").strip().lower()
+       if "bread" in user :
+          user_drop_bread = int(input("How many bread would you like to drop? "))
+          if user_cart["Bread"] >= 1:
+           if user_drop_bread <= user_cart["Bread"]:
+            user_cart["Bread"] = user_cart["Bread"] - user_drop_bread
+            print(f"{user_drop_bread} bread has been dropped")
+           else :
+              print("Insufficient amount to drop")
+          else :
+             print("Item is not in your cart")
+       elif "milk" in user :
+          user_drop_milk = int(input("How many milk would you like to drop? "))
+          if user_cart["Milk"] >= 1 :
+           if user_drop_milk <= user_cart["Milk"]:
+            user_cart["Milk"] = user_cart["Milk"] - user_drop_milk
+            print(f"{user_drop_milk} milk has been dropped")
+           else :
+              print("Insufficient amount to drop")
+          else :
+             print("Item is not in your cart")
+       elif "oat" in user :
+          user_drop_oat = int(input("How many oat would you like to drop? "))
+          if user_cart["Oat"] >= 1 :
+           if user_drop_oat <= user_cart["Oat"]:
+            user_cart["Oat"] = user_cart["Oat"] - user_drop_oat
+            print(f"{user_drop_oat} oat has been dropped")
+           else :
+              print("Insufficient amount to drop")
+          else :
+             print("Item is not in your cart")
+       elif "meat" in user :
+          user_drop_meat = int(input("How many meat would you like to drop? "))
+          if user_cart["Meat"] >= 1 :
+           if user_drop_meat <= user_cart["Meat"]:
+            user_cart["Meat"] = user_cart["Meat"] - user_drop_meat
+            print(f"{user_drop_meat} meat has been dropped")
+           else :
+              print("Insufficient amount to drop")
+          else :
+             print("Item is not in your cart")
+       elif "garri" in user :
+          user_drop_garri = int(input("How many garri would you like to drop? "))
+          if user_cart["Garri"] >= 1 :
+           if user_drop_garri <= user_cart["Garri"]:
+            user_cart["Garri"] = user_cart["Garri"] - user_drop_garri
+            print(f"{user_drop_garri} garri has been dropped")
+           else :
+              print("Insufficent amount to drop")
+          else :
+             print("Item is not in your cart")
+       elif "sardine" in user :
+          user_drop_sardine = int(input("How many sardine would you like to drop? "))
+          if user_cart["Sardine"] >= 1 :
+           if user_drop_sardine <= user_cart["Sardine"]:
+            user_cart["Sardine"] = user_cart["Sardine"] - user_drop_sardine
+            print(f"{user_drop_sardine} sardine has been dropped")
+           else :
+              print("Insufficient amount to drop")
+          else :
+             print("Item is not in your cart")
+       elif "water" in user :
+          user_drop_water = int(input("How many water would you like to drop? "))
+          if user_cart["Water"] >= 1 :
+           if user_drop_water <= user_cart["Water"]:
+            user_cart["Water"] = user_cart["Water"] - user_drop_water
+            print(f"{user_drop_water} water has been dropped")
+           else :
+              print("Insufficient number to drop")
+          else :
+             print("Item is not in your cart")
+       else :
+          print("Item is not in your cart!")
+    
+    def check_cart(self) :
+       print(user_cart)
+ 
+    def sum_item(self) :
+         if user_cart.get('Bread') >= 1:
+          sum_bread = cart_data.get('bread') * user_cart["Bread"]
+          total.append(sum_bread)
+         else :
+            total.append(0)
+            
+         if user_cart["Milk"] >= 1 :
+          sum_milk = cart_data.get('milk') * user_cart["Milk"]
+          total.append(sum_milk)
+         else :
+            total.append(0) 
+
+         if user_cart["Oat"] >= 1:
+          sum_oat = cart_data.get('oats') * user_cart["Oat"]
+          total.append(sum_oat)
+         else :
+            total.append(0)
+         
+         if user_cart["Meat"] >= 1 :
+          sum_meat = cart_data.get('meat') * user_cart["Meat"]
+          total.append(sum_meat)
+         else :
+            total.append(0)
+         
+         if user_cart["Garri"] >= 1 :
+          sum_garri = cart_data.get('garri') * user_cart["Garri"]
+          total.append(sum_garri)
+         else :
+            total.append(0)
+         
+         if user_cart["Sardine"] >= 1 :
+          sum_sardine = cart_data.get('sardines') * user_cart["Sardine"]
+          total.append(sum_sardine)
+         else :
+            total.append(0)
+
+         if user_cart["Water"] >= 1 :
+          sum_water = cart_data.get('water') * user_cart["Water"]
+          total.append(sum_water)
+         else :
+            total.append(0)
+
+         
+         print(f"The sum of your items is N{sum(total):,}") 
+    
+p1 = Cart(user_cart.get('Bread'), user_cart.get('Milk'), user_cart.get('Oat'), user_cart.get('Meat'), user_cart.get('Garri'), user_cart.get('Sardine'), user_cart.get('Water'))
+print("Welcome to Maggy Supermarket, below are the availabe items we have and their prices")
+print(f"{cart_data}")
+print("Enter 'A' to add item to cart")
+print("Enter 'D' to drop item from cart")
+print("Enter 'C' to check cart")
+print("Enter 'S' to sum items")
+user_trial = 1
+while user_trial :
+ user_choice = input("Enter choice: ").upper().strip()
+ if user_choice == "A" :
+   p1.add_item()
+ elif user_choice == "D" :
+    p1.drop_item()
+ elif user_choice == "C" :
+    p1.check_cart()
+ elif user_choice == "S" :
+    p1.sum_item()
