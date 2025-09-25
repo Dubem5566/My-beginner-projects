@@ -1,0 +1,43 @@
+class auth() :
+    def __init__(self,fname = "",username = "",password = "") :
+        self.fname = fname
+        self.username = username
+        self.password = password
+    
+    def register(self) :
+        print("MAGGY REGISTRATION PAGE")
+        self.fname = input("Enter first name: ").title()
+        self.username = input("Enter username: ").lower()
+        self.password = input("Enter password: ").strip()
+        print("Registration was successful!")
+    
+    def login(self) :
+        print("MAGGY LOGIN PAGE")
+        user_login_username = input("Enter username: ").lower()
+        if self.username == user_login_username :
+           print("Username is correct!")
+        else :
+           print("Username does not exist!")
+           return
+
+        user_login_password = input("Enter password: ").strip()
+        if self.password == user_login_password :
+            print(f"You are logged in as {self.username}")
+        else :
+            print("Incorrect password")
+
+p1 = auth()
+user_trial = 1
+while user_trial :
+ print("Enter 1 to register")
+ print("Enter 2 to login")
+ print("Enter 3 to quit")
+ user = input("Enter choice: ").strip()
+ if user == "1" :
+     p1.register()
+ elif user == "2" :
+     p1.login()
+ elif user == "3" :
+     break
+ else:
+     print("Invalid input!")
