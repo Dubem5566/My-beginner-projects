@@ -1,0 +1,146 @@
+import random
+
+
+class Bank():
+    def __init__(self,fname = "",lname = "",Acc_type = "",Acc_no = "",first_dep = "",password = "",balance = 0):
+        self.fname = fname
+        self.lname = lname
+        self.Acc_type = Acc_type
+        self.Acc_no = Acc_no
+        self.first_dep = first_dep
+        self.password = password
+        self.balance = balance
+
+    def register(self) :
+        Account_no = [str(i) for i in range(10)]
+        random_acc = random.choices(Account_no, k=10)
+        main_acc = "".join(random_acc)
+        self.fname = input("Enter first name: ").strip().title()
+        self.lname = input("Enter last name: ").strip().title()
+        self.Acc_type = input("Savings or Current? ").strip().title()
+        self.password = input("Enter password: ").strip()
+        self.Acc_no = main_acc
+        print(f"Your account number is {self.Acc_no}")
+        self.first_dep = int(input("Enter amount you want as your first deposit: "))
+        print(f"Successfully deposited ${self.first_dep}")
+        self.balance = self.balance + self.first_dep
+        print(f"Welcome {self.fname}, you have successfully created an account with us")
+
+    def login(self) :
+        user_login_name = input("Enter first name: ").strip().title()
+        if user_login_name == self.fname :
+           user_login_password = input("Enter password").strip()
+           if user_login_password == self.password :
+               print("Login Successful!")
+           else :
+               print("Incorrect password!")
+        else :
+            print("Invalid Username!")
+
+    def acc_bal(self) :
+        print(f"Account balance is ${(self.balance):,}")
+
+    def deposit(self) :
+        user_deposit = int(input("How much do you want to deposit? "))
+        user_acc = input("Enter Account number: ").strip()
+        if user_acc == self.Acc_no :
+           user_type = input("Savings or Current? ").strip().title()
+           if user_type == self.Acc_type :
+              user_password = input("Enter password: ").strip()
+              if user_password == self.password :
+                 print(f"${(user_deposit):,} has been sucessfully deposited to your account")
+                 self.balance = self.balance + user_deposit
+              else :
+                  print("Incorrect password!")
+           else:
+               print(f"Incorrect Account type!")
+        else :
+            print("Incorrect Account number!")
+
+    def withdraw(self) :
+        user_withdraw = input("Savings or Current?").strip().title()
+        if user_withdraw == self.Acc_type :
+            user_withdraw = int(input("How much would you like to withdraw? "))
+            if user_withdraw <= self.balance :
+                user_password = input("Enter password: ").strip()
+                if user_password == self.password:
+                    print(f"${(user_withdraw): ,} has been debited from your account")
+                    self.balance = self.balance - user_withdraw
+                else :
+                    print("Incorrect password!")
+            else :
+                print("Insufficent funds!")
+        else :
+            print("Incorrect Account type!")
+
+    def transfer(self) :
+        user_transfer = int(input("How much would you like to transfer? "))
+        if user_transfer <= self.balance :
+            user_acc = input("Enter recipient account number: ")
+            if len(user_acc) != 10 :
+                print("Account number must be 10 digits!")
+            else :
+                if user_acc == user2.Acc_no or user_acc == user3.Acc_no :
+                   user_password = input("Enter password: ").strip()
+                   if user_password == self.password :
+                       print(f"${(user_transfer):,} has been transferred to {user_acc}")
+                       self.balance = self.balance - user_transfer
+                   else :
+                      print("Incorrect password!")
+                else :
+                    print("Account number doesn't exist!")
+        else :
+            print("Insufficient funds!")
+
+user1 = Bank()
+
+class second(Bank) :
+    def __init__(self, fname="", lname="", Acc_type="", Acc_no="", first_dep="", password="", balance=0):
+        super().__init__(fname, lname, Acc_type, Acc_no, first_dep, password, balance)
+user2 = second()
+
+class third(Bank) :
+    def __init__(self, fname="", lname="", Acc_type="", Acc_no="", first_dep="", password="", balance=0):
+        super().__init__(fname, lname, Acc_type, Acc_no, first_dep, password, balance)
+user3 = Bank()
+count_login = 0
+count_reg = 0
+
+print("WELCOME TO BANK OF AMERICA")
+while True :
+    print("Enter 1 to register")
+    print("Enter 2 to login")
+    print("Enter 3 to deposit")
+    print("Enter 4 to withdraw")
+    print("Enter 5 to transfer")
+    print("Enter 6 to check account balance")
+    print("Enter 7 to log out")
+    user = input("Enter choice: ").strip()
+    if user == "1" :
+        if count_reg >= 1:
+           print("You already have an account")
+        elif count_reg < 1:
+           user1.register()
+           user2.register()
+           user3.register()
+           count_reg = count_reg + 1
+    elif user == "2" :
+         if count_login >= 1 :
+             print("You are already logged in!")
+         elif count_login < 1 :
+             user1.login()
+             count_login = count_login + 1   
+    elif user == "3" :
+        user1.deposit()
+    elif user == "4" :
+        user1.withdraw()
+    elif user == "5" :
+        user1.transfer()
+    elif user == "6" :
+        user1.acc_bal()
+    elif user == "7" :
+        break
+    else :
+        print("Invalid input!")
+
+
