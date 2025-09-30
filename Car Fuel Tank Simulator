@@ -1,0 +1,68 @@
+import random
+refill = []
+class fuel_tank() :
+    def __init__(self, capacity = 78, added_fuel = 0, refill_amount = 0):
+        self.capacity = capacity
+        self.added_fuel = added_fuel
+        self.refill_amount = refill_amount
+
+    def add_fuel(self) :
+        user_add_fuel = int(input("How many litres? "))
+        if user_add_fuel <= self.capacity :
+           if user_add_fuel > self.added_fuel :
+              self.added_fuel = self.added_fuel + user_add_fuel
+              print(f"{user_add_fuel} litres has been added") 
+           else :
+               print(f"Amount of litres requested is greater than tank capacity")
+        else :
+            print("Amount of litres requested is greater than tank capacity")
+    
+    def drive(self) :
+        drive_fuel = random.randint(10,33)
+        if drive_fuel > self.added_fuel :
+            print(f"Amount required to take you to your destination is {drive_fuel} litres, you have {self.added_fuel} available in your tank, pls add more fuel.")
+        else :
+            print(f"Amount required to take you to your destination is {drive_fuel} litres, Car is ready to drive")
+            self.added_fuel = self.added_fuel - drive_fuel
+    
+    def refill(self) :
+        if self.added_fuel < self.capacity :
+           self.refill_amount = self.capacity - self.added_fuel
+           print(f"You have {self.added_fuel} litres left, {self.refill_amount} litres has been added")
+           self.added_fuel = self.added_fuel + self.refill_amount
+           refill.append(self.refill_amount)
+        else :
+            print("You've exceeded amount of litres to add!")
+    
+    def cal_tot_refill(self) :
+        tot_refill = sum(refill)
+        print(f"You've refilled the total of {tot_refill} litres")
+    
+    def check_tank(self) :
+        print(f"You have {self.added_fuel} litres left")
+
+p1 = fuel_tank()
+print("WELCOME TO MAGGY DRIVING SCHOOL")
+while True :
+    print("Press 1 to add fuel")
+    print("Press 2 to drive")
+    print("Press 3 to refill")
+    print("Press 4 to calcuate total refill")
+    print("Press 5 to check fuel tank")
+    print("Press 6 to quit")
+    user = input("Enter choice: ").strip()
+    if user == "1" :
+        p1.add_fuel()
+    elif user == "2" :
+        p1.drive()
+    elif user == "3" :
+        p1.refill()
+    elif user == "4" :
+        p1.cal_tot_refill()
+    elif user == "5" :
+        p1.check_tank()
+    elif user == "6" :
+        break
+    else :
+        print("Invalid input!")
+
